@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Login-System</title>
+</head>
+<body>
+    <div class="container mt-5">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role='alert'><strong>Message :</strong>{{ message }}
+            <button type='button' class='close'                     data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+            </div>
+        {% endfor %}
+
+        <h3 class='mb-4'>Welcome to our login-register system</h3>
+
+        {% if user.is_authenticated %}
+            <h3>Hello {{ user.username }}</h3>
+            <h4>You're Successfully Logged In</h4>
+            <a href="/signout"><button type='submit'class='btn btn-primary'>SignOut</button></a>
+        {% else %}
+            <a href="/signup"><button class='btn btn-primary'>SignUp</button></a>
+            <a href="/signin"><button class='btn btn-primary'>SignIn</button></a>
+        {% endif %}
+
+        
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
